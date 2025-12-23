@@ -19,6 +19,10 @@ detect_platform() {
           echo "arch"
           return
         fi
+        if [[ "$distro_id" == "ubuntu" || "$distro_id" == "debian" || "$distro_like" == *"ubuntu"* || "$distro_like" == *"debian"* ]]; then
+          echo "ubuntu"
+          return
+        fi
       fi
       ;;
   esac
@@ -90,6 +94,31 @@ install_arch_packages() {
   sudo pacman -S --needed "${arch_packages[@]}"
 }
 
+install_ubuntu_packages() {
+  if ! command -v apt-get >/dev/null 2>&1; then
+    echo "apt-get is required for Ubuntu-based setups." >&2
+    exit 1
+  fi
+
+  local ubuntu_packages=(
+    chruby
+    ruby-install
+    stow
+    eza
+    zoxide
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-theme-powerlevel10k
+    curl
+  )
+
+  echo "==> Updating apt package metadata (requires sudo)"
+  sudo apt-get update
+  echo "==> Installing apt packages (requires sudo)"
+  sudo apt-get install -y "${ubuntu_packages[@]}"
+}
+
 install_volta_from_upstream() {
   if command -v volta >/dev/null 2>&1; then
     echo "==> Volta already installed"
@@ -131,6 +160,11 @@ main() {
       ;;
     arch)
       install_arch_packages
+      install_volta_from_upstream
+      install_uv_from_upstream
+      ;;
+    ubuntu)
+      install_ubuntu_packages
       install_volta_from_upstream
       install_uv_from_upstream
       ;;
