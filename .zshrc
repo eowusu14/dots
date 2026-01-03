@@ -1,7 +1,7 @@
 # use volta for node instead of nvm. takes precedence over nvm
 export PATH="$HOME/.volta/bin:$PATH"
 
-# ✅ fix compdef errors
+# fix compdef errors
 autoload -Uz compinit
 compinit
 
@@ -95,9 +95,11 @@ alias push='git push origin HEAD'
 alias commit='git commit -m'
 alias add='git add -p'
 alias log='git log --graph --all --pretty="format:%C(auto)%h %C(cyan)%ar %C(auto)%d %C(magenta)%an %C(auto)%s"'
+alias cd=z
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/owusu.boateng/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+# Go
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$HOME/.local/bin:$PATH"
