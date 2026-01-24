@@ -181,9 +181,9 @@ run = 'layout floating'
 
 
 [workspace-to-monitor-force-assignment]
-1 = 1   # Built-in Retina
-2 = 1
-3 = 2   # Dell P2723DE
-4 = 2
-5 = 3   # DELL U2417s
-6 = 3
+1 = 'Built-in Retina Display'
+2 = 'Built-in Retina Display'
+3 = 'Dell P2723DE'
+4 = 'Dell P2723DE'
+5 = 'DELL U2417s'
+6 = 'DELL U2417s'

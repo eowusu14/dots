@@ -103,3 +103,4 @@ export PATH="/Users/owusu.boateng/.rd/bin:$PATH"
 # Go
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$HOME/.local/bin:$PATH"
+eval "$(direnv hook zsh)"
