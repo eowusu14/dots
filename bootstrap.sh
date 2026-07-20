@@ -59,6 +59,7 @@ install_macos_deps() {
     powerlevel10k
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-history-substring-search
     stow
     herdr
   )
@@ -89,6 +90,7 @@ install_arch_packages() {
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-theme-powerlevel10k
+    zsh-history-substring-search
   )
 
   echo "==> Installing pacman packages (requires sudo)"
@@ -111,6 +113,7 @@ install_ubuntu_packages() {
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-theme-powerlevel10k
+    zsh-history-substring-search
     curl
   )
 
