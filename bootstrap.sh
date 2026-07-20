@@ -60,6 +60,7 @@ install_macos_deps() {
     zsh-autosuggestions
     zsh-syntax-highlighting
     stow
+    herdr
   )
 
   for package in "${brew_packages[@]}"; do
@@ -149,6 +150,21 @@ install_uv_from_upstream() {
   curl -LsSf https://astral.sh/uv/install.sh | sh
 }
 
+install_herdr_from_upstream() {
+  if command -v herdr >/dev/null 2>&1; then
+    echo "==> herdr already installed"
+    return
+  fi
+
+  if ! command -v curl >/dev/null 2>&1; then
+    echo "curl is required to install herdr." >&2
+    exit 1
+  fi
+
+  echo "==> Installing herdr (official installer)"
+  curl -fsSL https://herdr.dev/install.sh | sh
+}
+
 main() {
   local platform
   platform="$(detect_platform)"
@@ -162,11 +178,13 @@ main() {
       install_arch_packages
       install_volta_from_upstream
       install_uv_from_upstream
+      install_herdr_from_upstream
       ;;
     ubuntu)
       install_ubuntu_packages
       install_volta_from_upstream
       install_uv_from_upstream
+      install_herdr_from_upstream
       ;;
   esac
 
